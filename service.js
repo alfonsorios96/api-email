@@ -1,10 +1,16 @@
 const nodemailer = require('nodemailer');
 
+/**
+ * 
+    URL: https://api-email-sellfone.herokuapp.com/
+    URL: http://localhost:8080
+ */
+
 const email = (request, response) => {
     const data = request.body;
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
-        port: 465,
+        port: 587,
         secure: true, // use TLS
         auth: {
             user: "hola@sellfonemx.com",
