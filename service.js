@@ -3,10 +3,16 @@ const nodemailer = require('nodemailer');
 const email = (request, response) => {
     const data = request.body;
     const transporter = nodemailer.createTransport({
-        service: 'Gmail',
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // use TLS
         auth: {
-            user: 'caballeros.de.polymer@gmail.com',
-            pass: 'Polython2017'
+            user: "hola@sellfonemx.com",
+            pass: "bicho2016"
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false
         }
     });
     const mailOptions = {
@@ -21,6 +27,9 @@ const email = (request, response) => {
             response.status(500).json(error.message);
         } else {
             console.log('Email sent');
+            /*RESPONSE
+            {"response":{"envelope":{"from":"hola@sellfonemx.com","to":["atorres@socializando.net, acquisitions@sellfonemx.com, adquisition@robot.zapier.com"]},"messageId":"01000170ac160f6a-43d399cd-3e1e-43ff-af06-0ad247be4a00-000000@email.amazonses.com"}}
+            */
             res.status(200).json(info);
         }
     });
