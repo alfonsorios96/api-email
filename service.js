@@ -9,16 +9,17 @@ const nodemailer = require('nodemailer');
 const email = (request, response) => {
     const data = request.body;
     const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: true, // use TLS
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
-            user: "hola@sellfonemx.com",
-            pass: "bicho2016"
-        },
-        tls: {
-            // do not fail on invalid certs
-            rejectUnauthorized: false
+            type: 'OAuth2',
+            user: 'caballeros.de.polymer@gmail.com',
+            clientId: '300944596965-1comdl3i2ak1cj9smt2ralb5ua0kutt7.apps.googleusercontent.com',
+            clientSecret: 'D8IZBwkEihNAamt7nhffk7Ir',
+            refreshToken: '',
+            accessToken: '',
+            expires: 1484314697598
         }
     });
     const mailOptions = {
