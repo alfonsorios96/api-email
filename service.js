@@ -8,17 +8,18 @@ const nodemailer = require('nodemailer');
 
 const email = (request, response) => {
     const data = request.body;
+
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
         secure: true,
         auth: {
             type: 'OAuth2',
-            user: 'caballeros.de.polymer@gmail.com',
-            clientId: '300944596965-1comdl3i2ak1cj9smt2ralb5ua0kutt7.apps.googleusercontent.com',
-            clientSecret: 'D8IZBwkEihNAamt7nhffk7Ir',
-            refreshToken: '',
-            accessToken: '',
+            user: 'hola@sellfonemx.com',
+            clientId: '713912452017-he1942hdot2l9ld3be7fe71dknrquubm.apps.googleusercontent.com',
+            clientSecret: 'GXd36Z1RiwPVpijRsNil6sLh',
+            refreshToken: '1//04JxcdtRUMgHtCgYIARAAGAQSNwF-L9Ir6VC2eVBseBkgXUTrir6Ka_RTrtjvSXoPFHFE8AFWWFZDNjTpYSeLMmtCndiuo_MOTis',
+            accessToken: 'ya29.Il_BB4t92tyX6bvWJrOBkSD-wNIm1y8Q3ps4NQa6UJUG8qUJiFM3wq4QF_pP6-UOSrrJk6XG0qBMFBgAThPCLwgMTNrgVXEF3a8ziHrqumKy0A9WEfWh2YaU2qi081J-5Q',
             expires: 1484314697598
         }
     });
@@ -34,10 +35,10 @@ const email = (request, response) => {
             response.status(500).json(error.message);
         } else {
             console.log('Email sent');
-            /*RESPONSE
-            {"response":{"envelope":{"from":"hola@sellfonemx.com","to":["atorres@socializando.net, acquisitions@sellfonemx.com, adquisition@robot.zapier.com"]},"messageId":"01000170ac160f6a-43d399cd-3e1e-43ff-af06-0ad247be4a00-000000@email.amazonses.com"}}
-            */
-            res.status(200).json(info);
+            response.status(200).json({
+                info, data
+            });
+
         }
     });
 };
